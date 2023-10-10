@@ -1,0 +1,96 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0 20px;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #a9544e;
+  background: #FFF url("../images/background.png") repeat 0 0;
+  background-size: 150px auto;
+  display: flex;
+}
+#container {
+  margin: auto;
+}
+h1 {
+  margin: 25px 0;
+  font-family: "Chewy", cursive;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  border: 10px solid #a9544e;
+  border-radius: 15px;
+  display: block;
+}
+figure {
+  margin: 0;
+}
+figcaption {
+  margin: 10px 0 20px 0;
+  font-size: 35px;
+  font-family: "Gaegu", cursive;
+  font-weight: normal;
+  letter-spacing: -3px;
+}
+.counter-message {
+  color: #2f3036;
+}
+.counter {
+  margin-top: 5px;
+  display: block;
+}
+.number {
+  padding: 6px 4px 4px 6px;
+  font-family: "Press Start 2P", cursive;
+  font-weight: normal;
+  font-size: 16px;
+  text-align: center;
+  background: #2f3036;
+  background: linear-gradient(0deg, #2f3036 0%, #53545e 50%, #2f3036 100%);
+  border-left: 1px solid #b3b3b3;
+  border-right: 1px solid #b3b3b3;
+  color: #b3b3b3;
+  display: inline-block;
+}
+.number:first-child {
+  border-left: none;
+}
+.number:last-child {
+  border-right: none;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  /* TODO: Refactor this to avoid using clip, because it's deprecated */
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/clip */
+  clip: rect(0 0 0 0);
+  border: 0;
+}
+@media (min-width: 300px) {
+  h1 {
+    font-size: 50px;
+  }
+  figcaption {
+    font-size: 40px;
+  }
+}
+@media (min-width: 500px) {
+  img {
+    max-width: 400px;
+  }
+}
