@@ -46,6 +46,17 @@
     </div>
 
     <script>
+      fetch("/api/index").then(response => {
+        console.log("Result:", response);
+        // response.rows.forEach(row => {
+        //   console.log(row.dimensionValues[0], row.metricValues[0]);
+        // });
+      }).catch(error => {
+        console.error("Oops:", error);
+      })
+    </script>
+
+    <!-- <script>
       // The following is based on this "JavaScript quickstart for web applications" guide:
       // https://developers.google.com/analytics/devguides/reporting/core/v4/quickstart/web-js
       var VIEW_ID = "177566365";
@@ -83,10 +94,10 @@
         var formattedJson = JSON.stringify(response.result, null, 2);
         document.getElementById('query-output').value = formattedJson;
       }
-    </script>
+    </script> -->
 
     <!-- Load the JavaScript API client and sign-in library -->
-    <script src="https://apis.google.com/js/client:platform.js"></script>
+    <!-- <script src="https://apis.google.com/js/client:platform.js"></script> -->
 
   </body>
 </html>
