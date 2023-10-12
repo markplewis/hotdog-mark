@@ -48,6 +48,6 @@ export default async function handler(req, res) {
     });
     res.status(200).send(response);
   } catch(error) {
-    res.status(500).json({ error: "An error occurred" });
+    res.status(500).json({ error: error.message });
   }
 }
