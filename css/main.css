@@ -48,7 +48,8 @@ figcaption {
 }
 .counter {
   margin-top: 5px;
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 .number {
   padding: 6px 4px 4px 6px;
@@ -61,7 +62,7 @@ figcaption {
   border-left: 1px solid #b3b3b3;
   border-right: 1px solid #b3b3b3;
   color: #b3b3b3;
-  display: inline-block;
+  display: block;
 }
 .number:first-child {
   border-left: none;

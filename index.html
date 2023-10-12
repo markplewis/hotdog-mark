@@ -47,29 +47,29 @@
     </div>
 
     <script>
-      fetch("/api").then(response => {
-        const { totalUsers = 0 } = response;
-        const totalUsersPadded = `${totalUsers}`.padStart(5, "0");
+      fetch("/api")
+        .then(response => response.json())
+        .then(json => {
+          const { totalUsers = 0 } = json;
+          const totalUsersPadded = `${totalUsers}`.padStart(5, "0");
 
-        const visitorContainer = document.querySelector(".visitor-number");
-        if (visitorContainer) visitorContainer.textContent = totalUsers;
+          const visitorContainer = document.querySelector(".visitor-number");
+          if (visitorContainer) visitorContainer.textContent = totalUsers;
 
-        const counterContainer = document.querySelector(".counter");
-        if (!counterContainer) return;
+          const counterContainer = document.querySelector(".counter");
+          if (!counterContainer) return;
+          counterContainer.innerHTML = "";
 
-        console.log("Response", { response, totalUsers, totalUsersPadded, visitorContainer, counterContainer });
-
-        counterContainer.innerHTML = "";
-
-        totalUsersPadded.split("").forEach(num => {
-          const span = document.createElement("span");
-          span.classList.add("number");
-          span.textContent = num;
-          counterContainer.appendChild(span);
+          totalUsersPadded.split("").forEach(num => {
+            const span = document.createElement("span");
+            span.classList.add("number");
+            span.textContent = num;
+            counterContainer.appendChild(span);
+          });
+        })
+        .catch(error => {
+          console.error(error);
         });
-      }).catch(error => {
-        console.error(error);
-      })
     </script>
 
   </body>
