@@ -28,33 +28,44 @@
   </head>
   <body>
 
-    <div id="container" role="main">
+    <div class="container" role="main">
       <h1>The Real Hotdog Mark</h1>
       <figure>
         <img src="images/hotdog-mark.gif" width="400" height="400" alt="Mark dancing while wearing a hotdog suit" />
         <figcaption>Look at me go!</figcaption>
       </figure>
+      <p class="counter-message">
+        You are visitor number: <span class="visitor-number visually-hidden">0</span>
+        <span class="counter" aria-hidden="true">
+          <span class="number">0</span>
+          <span class="number">0</span>
+          <span class="number">0</span>
+          <span class="number">0</span>
+          <span class="number">0</span>
+        </span>
+      </p>
     </div>
-
-    <!-- <p class="counter-message">
-      You are visitor number: <span class="visually-hidden">469</span>
-      <span class="counter" aria-hidden="true">
-        <span class="number">0</span>
-        <span class="number">0</span>
-        <span class="number">4</span>
-        <span class="number">6</span>
-        <span class="number">9</span>
-      </span>
-    </p> -->
 
     <script>
       fetch("/api").then(response => {
-        console.log("Result:", response);
-        // response.rows.forEach(row => {
-        //   console.log(row.dimensionValues[0], row.metricValues[0]);
-        // });
+        const { totalUsers = 0 } = response;
+        const totalUsersPadded = `${totalUsers}`.padStart(5, "0");
+
+        const visitorContainer = document.querySelector(".visitor-number");
+        if (visitorContainer) visitorContainer.textContent = totalUsers;
+
+        const counterContainer = document.querySelector(".counter");
+        if (!counterContainer) return;
+        counterContainer.innerHTML = "";
+
+        totalUsersPadded.split("").forEach(num => {
+          const span = document.createElement("span");
+          span.classList.add("number");
+          span.textContent = num;
+          counterContainer.appendChild(span);
+        });
       }).catch(error => {
-        console.error("Oops:", error);
+        console.error(error);
       })
     </script>
 

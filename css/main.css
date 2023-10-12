@@ -14,7 +14,7 @@ body {
   background-size: 150px auto;
   display: flex;
 }
-#container {
+.container {
   margin: auto;
 }
 h1 {
