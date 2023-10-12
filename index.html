@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <title>The Real Hotdog Mark</title>
 
-    <meta property="og:url" content="http://therealhotdogmark.com/">
+    <meta property="og:url" content="https://therealhotdogmark.com/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="The Real Hotdog Mark">
     <meta property="og:description" content="I'm totally a hotdog! Look at me go!">
-    <meta property="og:image" content="http://therealhotdogmark.com/images/share-photo.jpg">
+    <meta property="og:image" content="https://therealhotdogmark.com/images/share-photo.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
 
     <link href="https://fonts.googleapis.com/css?family=Chewy|Press+Start+2P|Gaegu:700" rel="stylesheet">
-    <link href="css/normalize.css" type="text/css" rel="stylesheet">
-    <link href="css/main.css" type="text/css" rel="stylesheet">
+    <link href="./css/normalize.css" type="text/css" rel="stylesheet">
+    <link href="./css/main.css" type="text/css" rel="stylesheet">
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-EWT6Q3C2WB"></script>
@@ -30,10 +30,12 @@
 
     <div class="container" role="main">
       <h1>The Real Hotdog Mark</h1>
+
       <figure>
-        <img src="images/hotdog-mark.gif" width="400" height="400" alt="Mark dancing while wearing a hotdog suit" />
+        <img src="./images/hotdog-mark.gif" width="400" height="400" alt="Mark dancing while wearing a hotdog suit" />
         <figcaption>Look at me go!</figcaption>
       </figure>
+      
       <p class="counter-message">
         You are visitor number: <span class="visitor-number visually-hidden">0</span>
         <span class="counter" aria-hidden="true">
@@ -50,7 +52,10 @@
       fetch("/api")
         .then(response => response.json())
         .then(json => {
-          const { totalUsers = 0 } = json;
+          let { totalUsers = 0 } = json;
+          // TODO: remove this when I've migrated the data from Universal Analytics to GA4
+          totalUsers += 470;
+
           const totalUsersPadded = `${totalUsers}`.padStart(5, "0");
 
           const visitorContainer = document.querySelector(".visitor-number");
