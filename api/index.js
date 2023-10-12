@@ -39,7 +39,7 @@ export default async function handler(req, res) {
       // dimensions: [{ name: "city" }],
       metrics: [{ name: "activeUsers" }]
     });
-    res.status(200).send(response.rows || []);
+    res.status(200).send(response);
   } catch(error) {
     res.status(500).json({ error: error.message });
   }
