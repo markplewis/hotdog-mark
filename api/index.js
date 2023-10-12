@@ -36,8 +36,8 @@ export default async function handler(req, res) {
         startDate: "2018-06-21",
         endDate: "today"
       }],
-      // dimensions: [{ name: "city" }],
-      metrics: [{ name: "activeUsers" }]
+      // See: https://www.hotjar.com/google-analytics/glossary/unique-visitors/
+      metrics: [{ name: "totalUsers" }]
     });
     res.status(200).send(response);
   } catch(error) {
