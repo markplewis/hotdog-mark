@@ -39,7 +39,9 @@ export default async function handler(req, res) {
       // See: https://www.hotjar.com/google-analytics/glossary/unique-visitors/
       metrics: [{ name: "totalUsers" }]
     });
-    res.status(200).send(response);
+    res.status(200).send({
+      totalUsers: Number(response?.rows?.[0]?.metricValues?.[0]?.value || 0)
+    });
   } catch(error) {
     res.status(500).json({ error: error.message });
   }
