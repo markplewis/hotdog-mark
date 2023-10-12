@@ -11,7 +11,9 @@ const { BetaAnalyticsDataClient } = require("@google-analytics/data");
 // - Google Analytics Data: Node.js Client documentation: https://googleapis.dev/nodejs/analytics-data/latest/
 
 // Previously, I was using the Google Analytics Reporting API, but it's no longer supported by
-// Google Analytics 4: https://developers.google.com/analytics/devguides/reporting/core/v4
+// Google Analytics 4:
+// - Reporting API: https://developers.google.com/analytics/devguides/reporting/core/v4
+// - Intro to Google Analytics 4: https://developers.google.com/analytics/devguides/collection/ga4
 
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
