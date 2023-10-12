@@ -15,6 +15,7 @@ const { BetaAnalyticsDataClient } = require("@google-analytics/data");
 // - Reporting API: https://developers.google.com/analytics/devguides/reporting/core/v4
 // - Intro to Google Analytics 4: https://developers.google.com/analytics/devguides/collection/ga4
 
+// See: https://github.com/vercel/vercel/issues/749#issuecomment-715009494
 const { privateKey } = JSON.parse(process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }");
 
 const analyticsDataClient = new BetaAnalyticsDataClient({
@@ -31,24 +32,14 @@ export default async function handler(req, res) {
   try {
     const [response] = await analyticsDataClient.runReport({
       property: `properties/${propertyId}`,
-      dateRanges: [
-        {
-          startDate: "2018-06-21",
-          endDate: "today"
-        }
-      ],
-      dimensions: [
-        {
-          name: "city"
-        }
-      ],
-      metrics: [
-        {
-          name: "activeUsers"
-        }
-      ]
+      dateRanges: [{
+        startDate: "2018-06-21",
+        endDate: "today"
+      }],
+      // dimensions: [{ name: "city" }],
+      metrics: [{ name: "activeUsers" }]
     });
-    res.status(200).send(response);
+    res.status(200).send(response.rows || []);
   } catch(error) {
     res.status(500).json({ error: error.message });
   }
