@@ -15,10 +15,12 @@ const { BetaAnalyticsDataClient } = require("@google-analytics/data");
 // - Reporting API: https://developers.google.com/analytics/devguides/reporting/core/v4
 // - Intro to Google Analytics 4: https://developers.google.com/analytics/devguides/collection/ga4
 
+const { privateKey } = JSON.parse(process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }");
+
 const analyticsDataClient = new BetaAnalyticsDataClient({
   credentials: {
     client_email: process.env.GOOGLE_CLIENT_EMAIL,
-    private_key: process.env.GOOGLE_PRIVATE_KEY
+    private_key: privateKey
   },
   projectId: process.env.GOOGLE_PROJECT_ID
 });
