@@ -12,8 +12,5 @@
   "license": "UNLICENSED",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "@google-analytics/data": "^4.0.1"
   }
 }
